@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container text-center">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
+        <a href="/add/" class="btn btn-lg btn-outline-primary float-right h1"> + ADD </a>
+    </div>
+<table class="table shadow-lg mt-3">
+  <thead class="bg-primary text-white">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Roll Number</th>
+      <th scope="col">Year Of Joining</th>
+      <th scope="col">Course</th>
+      <th scope="col">Created Date</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for obj in student_list %}
+    <tr>
+      <th scope="row">{{obj.id}}</th>
+      <td>{{obj.Student_Name}}</td>
+      <td>{{obj.Roll_Number}}</td>
+      <td>{{obj.Year_Of_Joining}}</td>
+      <td>{{obj.Course}}</td>
+      <td>{{obj.cr_date}}</td>
+      <td><a href="/update/{{obj.id}}">Update</a></td>
+      <td><a href="/delete/{{obj.id}}">Delete</a></td>
+    {% empty %}
+      <td colspan="8" class="text-center">
+        <p>No Record Found</p>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container d-flex justify-content-center">
+<div class="card w-75 shadow-lg p-5 border border-primary rounded">
+	<h1>Update form</h1>
+	<hr class="mb-3" />
+	<form enctype="multipart/form-data" method="post">
+	{% csrf_token %}
+
+	<div class="mb-3 row mt-3">
+		<label class="col-sm-2 col-form-label" for="id_Student_Name">Student Name</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" name="Student_Name" maxlength="100" required="" id="id_Student_Name" value="{{form.Student_Name.value}}"
+			placeholder="Full Name">
+		</div>
+	</div>
+
+	<div class="mb-3 row">
+		<label class="col-sm-2 col-form-label" for="id_Roll_Number">Roll Number:</label>
+		<div class="col-sm-10">
+			<input type="number" class="form-control" name="Roll_Number" min="0" required="" id="id_Roll_Number" value="{{form.Roll_Number.value}}">
+		</div>
+	</div>
+
+	<div class="mb-3 row">
+		<label class="col-sm-2 col-form-label" for="id_Year_Of_Joining">Year Of Joining:</label> 
+		<div class="col-sm-10">
+			<input type="text" class="form-control" name="Year_Of_Joining" required="" id="id_Year_Of_Joining" value="{{form.Year_Of_Joining.value}}">
+		</div>
+	</div>
+	
+	<div class="mb-3 row">
+		<label class="col-sm-2 col-form-label" for="id_Course">Course:</label> 
+		<div class="col-sm-10">
+			<select name="Course" class="form-select" required="" id="id_Course">
+		  		<option value="{{form.Course.value}}" selected="" aria-label="Default select example">{{form.Course.value}}</option>
+
+		  		<option value="CSE">CSE</option>
+
+		  		<option value="ME">ME</option>
+
+		  		<option value="CIVIL">CIVIL</option>
+
+		  		<option value="EE">EE</option>
+
+			</select>
+		</div>
+	</div>
+	<div class="text-center">
+		<input type="submit" class="btn btn-outline-primary" value="Update">
+	</div>
+	</form>
+</div>
+</div>
+{% endblock %}
